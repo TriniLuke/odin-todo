@@ -4,7 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TriniLuke/odin-todo.git"
   },
   "author": "",
   "license": "MIT",
@@ -16,7 +23,8 @@
     "file-loader": "^6.2.0",
     "style-loader": "^3.3.2",
     "webpack": "^5.78.0",
-    "webpack-cli": "^5.0.1"
+    "webpack-cli": "^5.0.1",
+    "gh-pages": "^5.0.0"
   },
   "dependencies": {
     "date-fns": "^2.29.3"
@@ -28,5 +36,6 @@
       "no-unused-vars": "off",
       "no-use-before-define": "off"
     }
-  }
+  },
+  "homepage": "https://github.com/TriniLuke/odin-todo"
 }
