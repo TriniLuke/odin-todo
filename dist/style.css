@@ -1,0 +1,276 @@
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Work Sans", sans-serif;
+  font-weight: 300;
+  font-size: 1.5rem;
+  background-color: gray;
+  color: purple;
+
+  display: grid;
+  grid:
+    "header header header header" auto
+    "lists active  active active" auto/
+    1fr minmax(100px, 300px) minmax(250px, 500px) 1fr;
+}
+
+.title {
+  grid-area: header;
+  background: linear-gradient(45deg, purple, blue);
+  font-size: 4rem;
+  font-weight: 900;
+  color: yellow;
+  padding: 4rem;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  margin-top: 0;
+  text-shadow: 2px 2px black;
+}
+
+.title span {
+  color: white;
+}
+
+.sidebar {
+  background: gray;
+  grid-area: lists;
+  padding: 1rem;
+  padding-right: 0;
+}
+
+.task-list {
+  color: white;
+  font-size: 2rem;
+  font-weight: 400;
+  line-height: 1.7;
+  list-style: none;
+  padding: 2rem;
+  margin: 2rem;
+  padding-right: 0;
+  margin-right: 0;
+}
+
+.list-name {
+  cursor: pointer;
+}
+
+form {
+  display: flex;
+  gap: 5px;
+}
+
+.btn {
+  cursor: pointer;
+  background: purple;
+  border: 1px solid blue;
+  color: white;
+  padding: 1rem 2rem;
+}
+
+.btn.create {
+  font-size: 1rem;
+  font-weight: 900;
+  margin-right: 0.25em;
+  transition: opacity 250ms ease-in;
+}
+
+.btn-create,
+.btn-delete {
+  cursor: pointer;
+  background: transparent;
+  border: 1px solid white;
+  color: white;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  font-weight: 900;
+  margin-right: 0.25em;
+  transition: opacity 250ms ease-in;
+}
+
+.btn.create:hover {
+  color: green;
+}
+
+.btn.delete {
+  font-weight: 900;
+  font-size: 1rem;
+  transition: color 200ms;
+}
+
+.btn.delete:hover {
+  color: red;
+}
+
+.new {
+  background: transparent;
+  border: 0;
+  color: inherit;
+  border-bottom: 2px solid gray;
+  font-size: inherit;
+  outline: none;
+  padding: 0.25em;
+
+  transition: border-bottom 150ms ease-in;
+}
+
+.new::placeholder {
+  opacity: 0.4;
+}
+
+.new:focus {
+  border-bottom-width: 3px;
+}
+
+.new.list {
+  color: white;
+  font-size: 1.3rem;
+  border-bottom: 2px solid white;
+}
+
+.new.list::placeholder {
+  color: white;
+  opacity: 0.4;
+}
+
+.new.task {
+  margin-bottom: 0;
+}
+
+.active-list {
+  font-weight: 900;
+  background: white;
+  color: gray;
+  padding: 1rem;
+  border-top-left-radius: 1rem;
+  border-bottom-left-radius: 1rem;
+}
+
+.todo-list {
+  grid-area: active;
+  background: white;
+  color: blue;
+  padding: 2rem;
+  margin: 1rem;
+  margin-left: 0;
+  border-radius: 1rem;
+}
+
+.todo-header {
+  padding: 3rem;
+  color: purple;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.list-title {
+  font-size: 3rem;
+}
+
+.name-title {
+  margin: 0 1em 0 0;
+  color: purple;
+  padding: 1rem;
+}
+
+.todo-body {
+  padding: 3rem;
+  position: relative;
+  margin-top: 3rem;
+}
+
+.new-task-creator .create {
+  color: white;
+}
+
+.date {
+  border: 2px solid gray;
+  display: flex;
+  font-size: large;
+  opacity: 0.5;
+}
+
+[type="checkbox"] {
+  opacity: 0;
+  position: absolute;
+}
+
+.task label {
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin-left: 10px;
+}
+
+.task {
+  position: relative;
+  margin-bottom: 1.25em;
+}
+
+.due-date {
+  margin: auto;
+}
+
+.task::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  left: 0;
+  bottom: -0.5em;
+  height: 2px;
+  background: gray;
+  opacity: 0.5;
+}
+
+.custom-checkbox {
+  display: inline-block;
+  --size: 0.75em;
+  width: var(--size);
+  height: var(--size);
+  margin-right: var(--size);
+  cursor: pointer;
+  border: 2px solid gray;
+  border-radius: 50%;
+  transform: scale(1);
+  transition: transform 300ms ease-in-out;
+}
+
+.task:hover .custom-checkbox,
+[type="checkbox"]:focus + label .custom-checkbox {
+  transform: scale(1.2);
+  color: purple;
+}
+
+[type="checkbox"]:checked + label .custom-checkbox {
+  background: purple;
+  border-color: purple;
+  box-shadow: inset 0 0 0px 2px white;
+}
+
+[type="checkbox"]:checked + label {
+  opacity: 0.5;
+}
+
+.task label::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  left: 1.5em;
+  top: 50%;
+  height: 3px;
+  background: red;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 150ms ease-in-out;
+}
+
+[type="checkbox"]:checked + label::after {
+  transform: scaleX(1);
+  transform-origin: right;
+}

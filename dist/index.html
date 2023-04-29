@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>What to do list</title>
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="bundle.js"></script>
+</head>
+
+<body>
+  <h1 class="title">WHAT <span>TO</span> DO<span>?</span></h1>
+  <div class="sidebar">
+    <h2 class="name-title">My Projects</h2>
+    <ul class="task-list" id="data-lists"></ul>
+    <form action="" id="data-new-list-form">
+      <input type="text" class="new list" id="data-new-list-input" placeholder="add a new project" />
+      <button class="btn-create">Add</button>
+      <button class="btn-delete" id="data-delete-list-button">Delete</button>
+    </form>
+  </div>
+
+  <div class="todo-list" id="data-list-display-container">
+    <div class="todo-header">
+      <h2 class="list-title" id="data-list-title"></h2>
+    </div>
+
+    <div class="todo-body">
+      <div class="tasks" id="data-tasks"></div>
+
+      <div class="new-task-creator">
+        <form action="" id="data-new-task-form">
+          <input type="text" id="data-new-task-input" class="new task" placeholder="add a new todo" />
+          <input class="date" type="date" timezone="en-US" id="data-new-task-due-date" />
+          <button class="btn create">Add</button>
+          <button class="btn delete" id="data-clear-complete-tasks-button">Delete Completed Tasks</button>
+
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+  </div>
+  <template id="task-template">
+    <div class="task">
+      <input type="checkbox" />
+      <label>
+        <span class="custom-checkbox"></span>
+        <span class="due-date"></span>
+      </label>
+    </div>
+  </template>
+</body>
+
+</html>
