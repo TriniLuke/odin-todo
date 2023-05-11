@@ -272,3 +272,36 @@ form {
   transform: scaleX(1);
   transform-origin: right;
 }
+
+@media screen and (max-width: 600px) {
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+  }
+
+  .title {
+    font-size: 2rem;
+    width: 100%;
+    text-align: center;
+  }
+
+  .task-list,
+  .new,
+  form {
+    display: flex;
+    flex-direction: column;
+    width: 80vw;
+    align-self: center;
+    text-align: center;
+  }
+
+  .active-list {
+    width: 100%;
+    border: 1px solid gray;
+    border-radius: 1rem;
+    font-size: medium;
+    align-self: center;
+  }
+}
