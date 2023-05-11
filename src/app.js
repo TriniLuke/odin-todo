@@ -1,6 +1,6 @@
 import { format } from 'date-fns';
 import domEl from './domEl';
-import { createList, createTask } from './components';
+import { createProjectList, createTodo } from './components';
 
 export default function app() {
   const LOCAL_STORAGE_LIST_KEY = 'task.lists';
@@ -19,6 +19,8 @@ export default function app() {
     }
   };
 
+
+  // create todo expiration date
   const isDue = () => {
     const selectedList = lists.find((list) => list.id === selectedListId);
 
@@ -30,7 +32,8 @@ export default function app() {
     save();
   };
 
-  const renderTasks = (selectedList) => {
+  // render todos to the DOM
+  const renderTodo = (selectedList) => {
     selectedList.tasks.forEach((task) => {
       const taskElement = document.importNode(domEl().$taskTemplate.content, true);
       const checkbox = taskElement.querySelector('input');
@@ -45,6 +48,7 @@ export default function app() {
     });
   };
 
+  // render project list to DOM
   const renderLists = () => {
     lists.forEach((list) => {
       const listElement = document.createElement('li');
@@ -58,6 +62,7 @@ export default function app() {
     });
   };
 
+  // render all elements to the DOM
   const render = () => {
     clear(domEl().$listsContainer);
     renderLists();
@@ -67,12 +72,13 @@ export default function app() {
       domEl().$listDisplayContainer.style.display = 'none';
     } else {
       domEl().$listDisplayContainer.style.display = '';
-      domEl().$listTitleElement.innerText = selectedList.name;
+      domEl().$listTitleElement.innerText = `Project: ${selectedList.name}`;
       clear(domEl().$tasksContainer);
-      renderTasks(selectedList);
+      renderTodo(selectedList);
     }
   };
 
+  // listeners
   domEl().$listsContainer.addEventListener('click', (e) => {
     if (e.target.tagName.toLowerCase() === 'li') {
       selectedListId = e.target.dataset.listId;
@@ -108,7 +114,7 @@ export default function app() {
     e.preventDefault();
     const listName = domEl().$newListInput.value;
     if (listName == null || listName === '') return;
-    const list = createList(listName);
+    const list = createProjectList(listName);
     domEl().$newListInput.value = '';
     lists.push(list);
     save();
@@ -121,7 +127,7 @@ export default function app() {
     const date = domEl().$newTaskDueDate.value;
     const dueDate = format(new Date(date), 'MM/dd/yyyy');
     if (taskName == null || taskName === '') return;
-    const task = createTask(taskName, dueDate);
+    const task = createTodo(taskName, dueDate);
     domEl().$newTaskInput.value = null;
     domEl().$newTaskDueDate.value = null;
     const selectedList = lists.find((list) => list.id === selectedListId);

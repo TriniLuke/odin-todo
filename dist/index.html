@@ -11,8 +11,13 @@
 </head>
 
 <body>
+  <!-- logo -->
   <h1 class="title">WHAT <span>TO</span> DO<span>?</span></h1>
+
+  <!--  sidebar -->
   <div class="sidebar">
+
+    <!-- projects -->
     <h2 class="name-title">My Projects</h2>
     <ul class="task-list" id="data-lists"></ul>
     <form action="" id="data-new-list-form">
@@ -22,6 +27,7 @@
     </form>
   </div>
 
+  <!-- todo list container -->
   <div class="todo-list" id="data-list-display-container">
     <div class="todo-header">
       <h2 class="list-title" id="data-list-title"></h2>
@@ -33,7 +39,8 @@
       <div class="new-task-creator">
         <form action="" id="data-new-task-form">
           <input type="text" id="data-new-task-input" class="new task" placeholder="add a new todo" />
-          <input class="date" type="date" timezone="en-US" id="data-new-task-due-date" />
+          <input class="date" type="text" placeholder="Please Enter Due Date" onfocus="(this.type='date')"
+            onblur="(this.type='text')" timezone="en-US" id="data-new-task-due-date" />
           <button class="btn create">Add</button>
           <button class="btn delete" id="data-clear-complete-tasks-button">Delete Completed Tasks</button>
 
@@ -41,11 +48,11 @@
       </div>
     </div>
   </div>
-
-
   </div>
+
+  <!-- todo template -->
   <template id="task-template">
-    <div class="task">
+    <div class="todo">
       <input type="checkbox" />
       <label>
         <span class="custom-checkbox"></span>
