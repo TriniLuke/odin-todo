@@ -15,9 +15,7 @@ body {
 
   display: grid;
   grid:
-    "header header header header" auto
-    "lists active  active active" auto/
-    1fr minmax(100px, 300px) minmax(250px, 500px) 1fr;
+    "header header header header" auto "lists active  active active" auto/ 1fr minmax(100px, 300px) minmax(250px, 500px) 1fr;
 }
 
 .title {
@@ -161,7 +159,7 @@ form {
 }
 
 .todo-header {
-  padding: 3rem;
+  padding: 1rem;
   color: purple;
   display: flex;
   align-items: center;
@@ -169,7 +167,7 @@ form {
 }
 
 .list-title {
-  font-size: 3rem;
+  font-size: 2rem;
 }
 
 .name-title {
@@ -200,14 +198,14 @@ form {
   position: absolute;
 }
 
-.task label {
+.todo label {
   display: flex;
   align-items: center;
   position: relative;
   margin-left: 10px;
 }
 
-.task {
+.todo {
   position: relative;
   margin-bottom: 1.25em;
 }
@@ -216,7 +214,7 @@ form {
   margin: auto;
 }
 
-.task::after {
+.todo::after {
   content: "";
   position: absolute;
   right: 0;
@@ -240,23 +238,23 @@ form {
   transition: transform 300ms ease-in-out;
 }
 
-.task:hover .custom-checkbox,
-[type="checkbox"]:focus + label .custom-checkbox {
+.todo:hover .custom-checkbox,
+[type="checkbox"]:focus+label .custom-checkbox {
   transform: scale(1.2);
   color: purple;
 }
 
-[type="checkbox"]:checked + label .custom-checkbox {
+[type="checkbox"]:checked+label .custom-checkbox {
   background: purple;
   border-color: purple;
   box-shadow: inset 0 0 0px 2px white;
 }
 
-[type="checkbox"]:checked + label {
+[type="checkbox"]:checked+label {
   opacity: 0.5;
 }
 
-.task label::after {
+.todo label::after {
   content: "";
   position: absolute;
   left: 0;
@@ -270,7 +268,40 @@ form {
   transition: transform 150ms ease-in-out;
 }
 
-[type="checkbox"]:checked + label::after {
+[type="checkbox"]:checked+label::after {
   transform: scaleX(1);
   transform-origin: right;
+}
+
+@media screen and (max-width: 600px) {
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+  }
+
+  .title {
+    font-size: 2rem;
+    width: 100%;
+    text-align: center;
+  }
+
+  .task-list,
+  .new,
+  form {
+    display: flex;
+    flex-direction: column;
+    width: 80vw;
+    align-self: center;
+    text-align: center;
+  }
+
+  .active-list {
+    width: 100%;
+    border: 1px solid gray;
+    border-radius: 1rem;
+    font-size: medium;
+    align-self: center;
+  }
 }
