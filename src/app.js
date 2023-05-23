@@ -8,11 +8,13 @@ export default function app() {
   let lists = JSON.parse(localStorage.getItem(LOCAL_STORAGE_LIST_KEY)) || [];
   let selectedListId = localStorage.getItem(LOCAL_STORAGE_SELECTED_LIST_ID_KEY) || [];
 
+  // save to local storage
   const save = () => {
     localStorage.setItem(LOCAL_STORAGE_LIST_KEY, JSON.stringify(lists));
     localStorage.setItem(LOCAL_STORAGE_SELECTED_LIST_ID_KEY, selectedListId);
   };
 
+  // clear elements and replenish with updated elements
   const clear = (element) => {
     while (element.firstChild) {
       element.removeChild(element.firstChild);
